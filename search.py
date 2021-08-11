@@ -4,7 +4,7 @@ con, cur = None, None
 data1, data2, data3, data4 = "", "", "", ""
 row=None
 
-conn = pymysql.connect(host='127.0.0.1', user='root', password='1234', db='sqlDB', charset='utf8')
+conn = pymysql.connect(host='127.0.0.1', user='root', password='1234', db='memberDB', charset='utf8')
 cur = conn.cursor()
 
 cur.execute("SELECT * FROM userTable")
