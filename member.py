@@ -3,18 +3,17 @@ from tkinter import *
 from tkinter import messagebox
 
 
-## 함수 선언부
 def insertData() :
     con, cur = None, None
     data1, data2, data3, data4 = "", "", "", ""
     sql=""
-
-    ## 데이터베이스 연결 설정
     
+    conn = pymysql.connect(host='127.0.0.1', user='root', password='1234', db='memberDB', charset='utf8')
+    cur = conn.cursor()
 
     data1 = edt1.get();    data2 = edt2.get();    data3 = edt3.get();    data4 = edt4.get()
     try :
-        sql = "INSERT INTO usertable VALUES('" + data1 + "','" + data2 + "','" + data3 + "'," + data4 + ")"
+        sql = "INSERT INTO usertable VALUES('"+data1+"','"+data2+"','"+data3 +"',"+data4+")"
         cur.execute(sql)
     except :
         messagebox.showerror('오류', '데이터 입력 오류가 발생함')
@@ -46,7 +45,6 @@ def selectData() :
         listData3.insert(END, item3);        listData4.insert(END, item4)
     conn.close()    
 
-## 메인 코드부
 window = Tk()
 window.geometry("600x300")
 window.title("GUI 데이터 입력")
